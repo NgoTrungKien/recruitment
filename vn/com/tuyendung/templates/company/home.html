@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Công ty - Danh sách {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Quản lý</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../index.html"><i
+                                        class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">Công ty</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Danh sách</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+
+                        <!-- [ Hover-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Danh sách công ty đã đăng ký</h5>
+                                    <span class="d-block m-t-5">Số lượng : {{ companies.count() }}</span>
+                                </div>
+                                {% if companies.count() > 0 %}
+                                    {#                                    <div class="card-block table-border-style">#}
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">STT</th>
+                                                <th>Tên</th>
+                                                <th>Địa chỉ</th>
+                                                <th class="text-center">Số điện thoại</th>
+                                                <th class="text-center">Chi tiết</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for company in companies %}
+                                                <tr>
+                                                    <th scope="row" class="text-center">{{ loop.index }}</th>
+                                                    <td>{{ company.name }}</td>
+                                                    <td>{{ company.address }}</td>
+                                                    <td class="text-center">{{ company.phone }}</td>
+                                                    <td class="text-center"><span
+                                                            class="feather icon-alert-circle center text-warning h4"></span>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                {% else %}
+                                    <span>Chưa công ty nào được đăng ký. Vui lòng đăng ký</span>
+                                {% endif %}
+
+                        </div>
+                    </div>
+                    <!-- [ Hover-table ] end -->
+
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

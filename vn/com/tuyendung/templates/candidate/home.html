@@ -1,0 +1,96 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Ứng viên - Danh sách {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Ứng viên</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Ứng viên</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Danh sách</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+
+                        <!-- [ Hover-table ] start -->
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Danh sách ứng viên đã đăng ký</h5>
+                                    <span class="d-block m-t-5">Số lượng : {{ candidates.count() }}</span>
+                                </div>
+                                <div class="card-header border-0">
+                                    <h3>{{ message|safe }}</h3>
+                                </div>
+                                {% if candidates.count() > 0 %}
+                                    {#                                    <div class="card-block table-border-style">#}
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center">STT</th>
+                                                <th>Tên</th>
+                                                <th>Địa chỉ</th>
+                                                <th class="text-center">Số điện thoại</th>
+                                                <th class="text-center">Chi tiết</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for candidate in candidates %}
+                                                <tr>
+                                                    <th scope="row" class="text-center">{{ loop.index }}</th>
+                                                    <td>{{ candidate.name }}</td>
+                                                    <td>{{ candidate.address }}</td>
+                                                    <td class="text-center">{{ candidate.phone }}</td>
+                                                    <td class="text-center"><a
+                                                            href="{{ url_for('candidate.profile',id=candidate.id,_external=True) }}"
+                                                            class="feather icon-alert-circle center text-warning h4"></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                {% else %}
+                                    <div class="card-block">
+                                        <p class="text-capitalize">Bạn chưa đăng ký ứng viên nào. Vui lòng đăng ký mới
+                                            <a href="{{ url_for('candidate.register') }}">tại đây</a></p>
+                                    </div>
+                                {% endif %}
+
+                        </div>
+                    </div>
+                    <!-- [ Hover-table ] end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

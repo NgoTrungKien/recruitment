@@ -1,0 +1,2 @@
+MALE = True
+FEMALE = False

@@ -1,0 +1,107 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dự án - Đăng ký {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/assets/plugins/editor/summernote-lite.min.css">
+{% endblock %}
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Quản lý</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Dự án</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Đăng ký</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Biểu mẫu</h5>
+                                </div>
+                                <div class="card-body">
+
+                                    <h5>{{ message|safe }}</h5>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col col-xl-12">
+                                            <form action="{{ url_for('id.registration') }}" method="post">
+                                                {{ form.csrf_token }}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            {{ form.title.label }}
+                                                            {{ form.title(class_="form-control") }}
+                                                            {#                                                <small id="emailHelp" class="form-text text-muted"></small>#}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            {{ form.content.label }}
+                                                            {{ form.content(class_="form-control") }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col col-md-6">
+                                                        <div class="form-group">
+                                                            {{ form.company.label }}
+                                                            {{ form.company(class_="form-control") }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-6">
+                                                        <div class="form-group">
+                                                            {{ form.demand_qty.label }}
+                                                            {{ form.demand_qty(class_="form-control") }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{ form.submit(class_="btn btn-primary") }}
+                                            </form>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    {{ super() }}
+    <script type="text/javascript" src="/static/assets/plugins/editor/summernote-lite.min.js"></script>
+
+{% endblock javascripts %}

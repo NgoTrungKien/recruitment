@@ -1,0 +1,85 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dự án - Tuyển dụng {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Dự án</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Tuyển dụng</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Dự án</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+
+                    <div class="card-body">
+                        <h5>{{ message|safe }}</h5>
+                    </div>
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        {% for project in projects %}
+                            <div class="col-md-12 col-xl-4">
+                                <div class="card card-social">
+                                    <div class="card-block border-bottom">
+                                        <div class="row align-items-center justify-content-center">
+                                            <div class="col-auto">
+                                                <i class="fab fa-facebook-f text-primary f-36"></i>
+                                            </div>
+                                            <div class="col text-right">
+
+                                                <h3 class="text-capitalize">{{ project.company.name }}
+                                                    <a href="{{ url_for('id.profile', id=project.id,_external=True) }}"
+                                                       class="feather icon-alert-circle center text-warning"></a>
+                                                </h3>
+                                                <h5 class="text-c-green mb-0">Số lượng tuyển dụng: <span
+                                                        class="text-muted">{{ project.demand_qty }} ứng viên</span></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="row align-items-center justify-content-center card-active">
+
+                                            <div class="col">
+                                                <a class="btn btn-info float-right"
+                                                   href="{{ url_for('recruitment.register',id=project.id,_external=True) }}"
+                                                   role="button"
+                                                   data-toggle="tooltip"
+                                                   data-original-title="Đăng ký ứng viên bạn quản lý vào dự án này">
+                                                    Đăng ký
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

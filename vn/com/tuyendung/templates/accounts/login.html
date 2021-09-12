@@ -1,0 +1,63 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Đăng nhập {% endblock %}
+
+{% block content %}
+
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="feather icon-unlock auth-icon"></i>
+                    </div>
+                    <h3 class="mb-4">Đăng nhập</h3>
+
+                    <span class="mb-0 text-muted">
+                        {% if msg %}
+                            {{ msg | safe }}
+                        {% else %}
+                            Thông tin cá nhân của bạn!!!
+                        {% endif %} 
+                    </span>
+
+                    <br/>
+                    <br/>
+
+                    <form role="form" method="post" action="{{ url_for('auth.login') }}">
+
+                        {{ form.csrf_token }}
+
+                        <div class="input-group mb-3">
+                            {{ form.user_id(class="form-control") }}
+                        </div>
+
+                        <div class="input-group mb-4">
+                            {{ form.password(class="form-control", type="password") }}
+                        </div>
+
+                        <div class="form-group text-left">
+                            <div class="checkbox checkbox-fill d-inline">
+                                {{ form.remember_me(type="checkbox",id="checkbox-fill-a1") }}
+                                {{ form.remember_me.label(class='cr') }}
+                            </div>
+                        </div>
+                        {{ form.submit(class_="btn btn-primary shadow-2 mb-4") }}
+
+                    </form>
+
+                    <p class="mb-0 text-muted">Nếu chưa có tài khoản? <a href="{{ url_for('auth.register') }}">Đăng ký
+                        tại đây!</a></p>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

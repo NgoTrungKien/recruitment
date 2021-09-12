@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Ứng viên - Thông tin {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Quản lý</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">Ứng viên</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:">{{ candidate.collaborator.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>{{ candidate.name }}</h5>
+                                </div>
+                                <div class="card-block">
+                                    <p class="text-capitalize">Địa chỉ: {{ candidate.address }}
+                                    </p>
+                                    <p class="text-capitalize">Số điện thoại liên lạc: {{ candidate.phone }}
+                                    </p>
+                                    <p class="text-capitalize">Email liên lạc: {{ candidate.email }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
